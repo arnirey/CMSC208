@@ -20,8 +20,8 @@ define('LARAVEL_START', microtime(true));
 | loading any of our classes later on. It feels great to relax.
 |
 */
-
-require __DIR__.'/../vendor/autoload.php';
+/* change directory to match web host directory 17-Apr-2018 */
+require __DIR__.'/../tocn_test2/vendor/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -34,9 +34,12 @@ require __DIR__.'/../vendor/autoload.php';
 | the responses back to the browser and delight our users.
 |
 */
+/* change directory to match web host directory 17-Apr-2018 */
+$app = require_once __DIR__.'/../tocn_test2/bootstrap/app.php';
 
-$app = require_once __DIR__.'/../bootstrap/app.php';
-
+$app->bind('path.public', function() {
+    return __DIR__;
+});
 /*
 |--------------------------------------------------------------------------
 | Run The Application
